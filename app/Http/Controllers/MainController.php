@@ -10,4 +10,4 @@ class MainController extends Controller
     {
         return "Вітаємо в системі управління бібліотекою! Це головна сторінка.";
     }
-}
+} 
