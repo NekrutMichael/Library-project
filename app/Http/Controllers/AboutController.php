@@ -10,4 +10,4 @@ class AboutController extends Controller
     {
         return "Про проєкт: Курсова робота. Тематика: Комерційна бібліотека. Розроблено на базі фреймворку Laravel.";
     }
-}
+} 
