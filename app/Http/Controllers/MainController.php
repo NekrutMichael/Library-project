@@ -8,6 +8,6 @@ class MainController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return "Вітаємо в системі управління бібліотекою! Це головна сторінка.";
+        return view('home');
     }
 }

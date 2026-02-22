@@ -15,7 +15,7 @@ public function index()
             4 => 'Наталка Полтавка',
             5 => 'Кобзар',
         ];
-        return "Список книг у бібліотеці:<br><br>" . implode('<br>', $books);
+        return view('books', ['books' => $books]);
     }
 public function show($id)
     {
