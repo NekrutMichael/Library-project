@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Головна</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/books">Каталог</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.books.index') }}">Адмін-каталог</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">Про проєкт</a></li>
                 </ul>
             </div>
