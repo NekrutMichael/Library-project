@@ -1,16 +1,20 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('title', 'Адмін-панель: Книги')
+@section('title', 'Книги')
+
+@section('content_header')
+    <h1>Управління книгами</h1>
+@stop
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Управління книгами</h2>
-    </div>
-
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-
+    <div class="mb-3">
+        <a href="{{ route('admin.books.create') }}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Додати нову книгу
+        </a>
+    </div>
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
