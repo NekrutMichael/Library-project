@@ -8,7 +8,11 @@
 
 @section('content')
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="alert alert-success mt-3 alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+            <h5><i class="icon fas fa-check"></i> Успіх!</h5>
+            {{ session('success') }}
+        </div>
     @endif
     <div class="mb-3">
         <a href="{{ route('admin.books.create') }}" class="btn btn-primary">
@@ -30,7 +34,7 @@
                     <td>{{ $book->Title ?? 'Без назви' }}</td> 
                     <td>
                         <a href="{{ route('admin.books.show', $book->BookID) }}" class="btn btn-info btn-sm">Перегляд</a>
-                        
+                        <a href="{{ route('admin.books.edit', $book->BookID) }}" class="btn btn-warning btn-sm">Редагувати</a>
                         <form action="{{ route('admin.books.destroy', $book->BookID) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE') <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Точно видалити?')">Видалити</button>

@@ -26,7 +26,7 @@
                     <strong>Ціна оренди за день:</strong> {{ $book->DailyRentPrice }} грн
                 </li>
                 <li class="list-group-item">
-                    <strong>ID жанру:</strong> {{ $book->GenreID }}
+                    <strong>ID жанру:</strong> {{ $book->genre->GenreName ?? 'Жанр не вказано' }}
                 </li>
             </ul>
             

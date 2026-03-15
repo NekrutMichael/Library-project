@@ -69,6 +69,9 @@ return [
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
+    'logo_url' => 'home',
+    'logout_url' => 'logout',
+    'logout_method' => 'post',
 
     /*
     |--------------------------------------------------------------------------
@@ -300,6 +303,17 @@ return [
 
     'menu' => [
         // Navbar items:
+        [
+            'text' => 'Повернутися на сайт',
+            'url'  => '/',
+            'icon' => 'fas fa-fw fa-home',
+            'icon_color' => 'cyan',
+        ],
+        [
+            'text' => 'Книжковий каталог',
+            'url'  => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+        ],
         [
             'type' => 'navbar-search',
             'text' => 'search',
