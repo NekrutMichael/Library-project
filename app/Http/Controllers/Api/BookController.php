@@ -8,15 +8,18 @@ use App\Models\Book;
 
 class BookController extends Controller
 {
-    public function index()
-    {
-        $book = Book::all();
-        return response()->json($book);
+    public function index(Request $request) {
+    $query = Book::query();
+    if ($request->has('genre_id')) {
+        $query->where('GenreID', $request->genre_id);
     }
+    return response()->json($query->get());
+}
     public function show($id)
     {
         $book = Book::findOrFail($id);
         return response()->json($book);
+        return response()->json(Book::where('BookID', $id)->first());
     }
     public function store(Request $request)
     {
