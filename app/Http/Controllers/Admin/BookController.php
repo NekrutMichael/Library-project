@@ -14,13 +14,14 @@ class BookController extends Controller
         $books = Book::all();
         return view('admin.books.index', compact('books'));
     }
-    public function show(Book $book) 
+    public function show($id) 
     {
+        $book = \App\Models\Book::findOrFail($id);
         return view('admin.books.show', compact('book'));
     }
     public function destroy(Book $book)
     {
-        $book->delete();
+        \App\Models\Book::findOrFail($id)->delete();
         return redirect()->route('admin.books.index')->with('success', 'Книгу успішно видалено!');
     }
 
@@ -43,8 +44,9 @@ class BookController extends Controller
         Book::create($validated);
         return redirect()->route('admin.books.index')
                          ->with('success', 'Нову книгу успішно додано до каталогу!');}
-    public function edit(Book $book) {
+    public function edit($id) {
         $genres = \App\Models\Genre::all();
+        $book = \App\Models\Book::findOrFail($id);
         return view('admin.books.edit', compact('book', 'genres'));
     }
     public function update(Request $request, Book $book) {

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Book;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,36 +16,33 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-{
-    $cat1 = \App\Models\Category::create(['name' => 'Фантастика']);
-    $cat2 = \App\Models\Category::create(['name' => 'Детектив']);
-    $cat3 = \App\Models\Category::create(['name' => 'Класика']);
-    \App\Models\Book::create([
-        'title' => 'Розум вбивці',
-        'author' => 'Майк Омер',
-        'price' => 220,
-        'category_id' => $cat2->id,
-        'cover' => '/images/book1.jpg'
-    ]);
-    \App\Models\Book::create([
-        'title' => 'Дюна',
-        'author' => 'Френк Герберт',
-        'price' => 350,
-        'category_id' => $cat1->id, // Фантастика
-        'cover' => '/images/book4.jpg'
-    ]);
-    \App\Models\Book::create([
-    'Title' => 'Розум вбивці',
-    'DailyRentPrice' => 220,
-    'Cover' => 'book1.jpg', // Тільки назва файлу
-    'GenreID' => 2, // Ваш ID для жанру Детектив
-    'PublicationYear' => 2018,
-    'CopiesAvailable' => 5,
-    'CollateralValue' => 450
-    ]);
-    \App\Models\User::factory()->create([
-        'name' => 'Test User',
-        'email' => 'test@example.com',
-    ]);
+    {
+        $cat1 = Category::create(['name' => 'Фантастика']);
+        $cat2 = Category::create(['name' => 'Детектив']);
+        $cat3 = Category::create(['name' => 'Класика']);
+
+        Book::create([
+            'title' => 'Розум вбивці',
+            'author' => 'Майк Омер',
+            'price' => 220,
+            'category_id' => $cat2->id,
+            'cover' => '/images/book1.jpg',
+        ]);
+
+        Book::create([
+            'title' => 'Дюна',
+            'author' => 'Френк Герберт',
+            'price' => 350,
+            'category_id' => $cat1->id,
+            'cover' => '/images/book4.jpg',
+        ]);
+
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@test.com',
+            'password' => bcrypt('password123'),
+        ]);
+    }
 }
-}
+
+

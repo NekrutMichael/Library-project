@@ -17,7 +17,6 @@
                 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Головна</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Про проєкт</a></li>
 
                     @auth
                         <li class="nav-item"><a class="nav-link text-info fw-bold" href="{{ route('admin.books.index') }}">Адмін-каталог</a></li>

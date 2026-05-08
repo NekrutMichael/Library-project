@@ -305,7 +305,7 @@ return [
         // Navbar items:
         [
             'text' => 'Повернутися на сайт',
-            'url'  => '/',
+            'url'  => 'http://127.0.0.1:4173/',
             'icon' => 'fas fa-fw fa-home',
             'icon_color' => 'cyan',
         ],
@@ -313,6 +313,12 @@ return [
             'text' => 'Книжковий каталог',
             'url'  => 'admin/books',
             'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => 'Повідомлення',
+            'url'  => 'admin/messages',
+            'icon' => 'fas fa-fw fa-envelope',
+            'icon_color' => 'yellow',
         ],
         [
             'type' => 'navbar-search',

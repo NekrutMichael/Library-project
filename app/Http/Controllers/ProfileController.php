@@ -60,4 +60,10 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    public function store(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
+        $request->session()->regenerate();
+        return redirect()->intended(route('admin.books.index', absolute: false));
+    }
 }

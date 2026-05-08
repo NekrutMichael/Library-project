@@ -11,14 +11,19 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->web(append: [
-            \App\Http\Middleware\HandleInertiaRequests::class,
-            \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
-        ]);
+    ->withMiddleware(function (Middleware $middleware) {
+        // 1. Дозволяємо Sanctum працювати зі станом (куками)
+        $middleware->statefulApi();
 
-        //
+        // 2. Вимикаємо перевірку CSRF для входу та реєстрації на час розробки
+        $middleware->validateCsrfTokens(except: [
+            'login',
+            'register',
+            'logout',
+            'sanctum/csrf-cookie',
+            'api/*'
+        ]);
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
+    ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
