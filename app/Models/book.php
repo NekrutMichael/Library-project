@@ -4,16 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class book extends Model
+class Book extends Model
 {
     protected $primaryKey = 'BookID';
     public $timestamps = false; 
     protected $fillable = [
-        'Title', 'PublicationYear', 'CopiesAvailable', 'CollateralValue', 'DailyRentPrice', 'GenreID'
+        'Title', 'Description', 'Cover', 'PublicationYear', 'CopiesAvailable', 'CollateralValue', 'DailyRentPrice', 'GenreID'
     ];
     public function genre()
     {
     return $this->belongsTo(Genre::class, 'GenreID', 'GenreID');
-    return $this->belongsTo(Genre::class);
+    }
+    public function authors()
+    {
+        return $this->belongsToMany(Author::class,'authors_books','BookID','AuthorID');
     }
 }

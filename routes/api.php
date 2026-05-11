@@ -5,10 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BookController;
 use App\Http\Models\Genre;
 use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\LoanController;
+use App\Http\Controllers\ProfileController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:sanctum')->get('/profile/loans', [ProfileController::class, 'loans']); //Повернення історії оренди користувача (GET)
+Route::middleware('auth:sanctum')->post('/rent', [LoanController::class, 'rentBooks']); //Оренда книг (POST)
 
 Route::get('/user', function (Request $request) {
     return $request->user();
