@@ -11,7 +11,7 @@ class BookController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Book::with('authors');
+        $query = Book::with('authors', 'genre');
 
         if ($request->has('genre_id')) {
             $query->where('GenreID', $request->genre_id);
@@ -22,7 +22,7 @@ class BookController extends Controller
 
     public function show($id)
     {
-        $book = Book::with('authors')->where('BookID', $id)->firstOrFail();
+        $book = Book::with('authors', 'genre')->where('BookID', $id)->firstOrFail();
         return response()->json($book);
     }
 
